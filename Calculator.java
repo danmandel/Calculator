@@ -5,11 +5,11 @@ import java.awt.event.*;
 public class Calculator extends JFrame implements ActionListener {
 	JPanel[] row = new JPanel[5];
 	JButton[] button = new JButton[19];
-	String[] buttonString = {"7", "8", "9", "+",
-							 "4", "5", "6", "-",
-							 "1", "2", "3", "*",
-							 ".", "/", "C", "√",
-							 "+/-", "=", "0"};
+	String[] buttonString = {"7", "8", "9", "+", 
+                             "4", "5", "6", "-",
+                             "1", "2", "3", "*",
+                             ".", "/", "C", "√",
+                             "+/-", "=", "0"};
 	int[] dimW = {300,45,100,90};
 	int[] dimH = {35,40};
 	Dimension displayDimension = new Dimension(dimW[0],dimH[0]);
