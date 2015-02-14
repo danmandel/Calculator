@@ -1,2 +1,2 @@
 # Calculator
-Written in Java.
+Basic Calculator in Java.
