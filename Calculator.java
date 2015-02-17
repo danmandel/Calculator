@@ -5,11 +5,11 @@ import java.awt.event.*;
 public class Calculator extends JFrame implements ActionListener {
 	JPanel[] row = new JPanel[5];
 	JButton[] button = new JButton[19];
-	String[] buttonString = {"7", "8", "9", "+", 
-                             "4", "5", "6", "-",
-                             "1", "2", "3", "*",
-                             ".", "/", "C", "√",
-                             "+/-", "=", "0"};
+	String[] buttonString = {"7", "8", "9", "+",
+							 "4", "5", "6", "-",
+							 "1", "2", "3", "*",
+							 ".", "/", "C", "√",
+							 "+/-", "=", "0"};
 	int[] dimW = {300,45,100,90};
 	int[] dimH = {35,40};
 	Dimension displayDimension = new Dimension(dimW[0],dimH[0]);
@@ -22,7 +22,7 @@ public class Calculator extends JFrame implements ActionListener {
 	Font font = new Font("Times new Roman", Font.BOLD,14);
 	
 	Calculator() { // same as class name
-		super("Best calc ever lol");
+		super("Best calc ever");
 		setDesign();
 		setSize(380,250);
 		setResizable(false);
@@ -74,8 +74,40 @@ public class Calculator extends JFrame implements ActionListener {
 		row[4].add(button[17]);
 		add(row[4]);
 		setVisible(true);
-		
-		
+	}
+	
+	public void clear(){
+		try{
+			display.setText("");
+			for(int i = 0;i < 4; i++)
+				function[i] = false;
+			for(int i = 0;i < 2; i++)
+				temporary[i] = 0;
+		}catch(NullPointerException e){
+		}
+	}
+	
+	public void getSqrt(){
+		try{
+			double value = Math.sqrt(Double.parseDouble(display.getText()));
+			// Create a variable for value, and use Math's square root to find value
+			display.setText(Double.toString(value));
+		}	catch(NumberFormatException e){		
+		}
+	}
+	
+	public void getPosNeg(){
+		try{
+			double value = Double.parseDouble(display.getText());
+			//Variable for the current value
+			if (value!= 0){
+				value = value * (-1);
+				display.setText(Double.toString(value));
+			}
+			else{
+			}
+		} catch(NumberFormatException e){
+		}
 	}
 	
 	public final void setDesign(){
