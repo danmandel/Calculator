@@ -110,6 +110,24 @@ public class Calculator extends JFrame implements ActionListener {
 		}
 	}
 	
+	public void getResult(){
+		double result = 0;
+		temporary[1] = Double.parseDouble(display.getText());
+		String temp0 = Double.toString(temporary[0]);
+		String temp1 = Double.toString(temporary[1]);
+		try{
+			if(temp0.contains("-")){
+				String[] temp00 = temp0.split("-", 2);
+				temporary[0] = (Double.parseDouble(temp00[1])*-1);
+			}
+			if(temp1.contains("-")){
+				String[] temp11 = temp1.split("-",2);
+				temporary[1] = (Double.parseDouble(temp11[1]))* -1);
+			}
+		}
+		
+	}
+	
 	public final void setDesign(){
 		try{
 			UIManager.setLookAndFeel("com.sun.kava.swing.plaf.nimbus.NimbusLookAndFeel");	
