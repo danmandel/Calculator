@@ -122,10 +122,22 @@ public class Calculator extends JFrame implements ActionListener {
 			}
 			if(temp1.contains("-")){
 				String[] temp11 = temp1.split("-",2);
-				temporary[1] = (Double.parseDouble(temp11[1]))* -1);
+				temporary[1] = (Double.parseDouble(temp11[1])* -1);
 			}
+		} catch(ArrayIndexOutOfBoundsException e){
 		}
-		
+		try{
+			if(function[2] == true) // start off with multiplication
+				result = temporary[0] * temporary[1];
+			else if(function[3] == true) // division
+				result = temporary[0] / temporary[1];
+			else if (function[0] == true)
+				result = temporary[0] + temporary[1];
+			display.setText(Double.toString(result)); // display now has result
+			for (int i = 0; i < 4; i++)
+				function[i] = false; // set all the functions back to 0
+		} catch (NumberFormatException e){
+		}
 	}
 	
 	public final void setDesign(){
@@ -136,8 +148,19 @@ public class Calculator extends JFrame implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent ae){
-		
+		if (ae.getSource() == button[0])
+			display.append("7");
+		if (ae.getSource() == button[1])
+			display.append("8");
+		if (ae.getSource() == button[2])
+			display.append("9");
+		if (ae.getSource() == button[3]) //add function[0]
+			 temporary[0] = Double.parseDouble(display.getText());
+			function[1] = true;
+			display.setText("");
 	}
+	if(ae.getSource() == button[8])
+		display.append("1");
 	
 	public static void main(String[] arguments){
 		Calculator c = new Calculator();
