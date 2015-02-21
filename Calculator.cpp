@@ -1,4 +1,10 @@
-int b;
+#include <iostream>
+using namespace std;
+
+int main()
+{	
+	int a; // declaring the variable
+	int b;
 	int sum;
 
 	cout << "Enter a number: \n"; // takes info from computer and gives it to user
