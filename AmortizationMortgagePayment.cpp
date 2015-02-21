@@ -1,14 +1,21 @@
 #include <iostream>
-//#define MONTHS_IN_YEAR 12
-
 using namespace std;
 
 int main()
 {
 	const int monthsInYear = 12;
-	double principal = 100000.0;
-	double interest = 0.05;
-	int yearsOfLoan = 30;
+
+	double principal = 0.0;
+	cout << "Enter the principal amount: ";
+	cin >> principal;
+
+	double interest = 0.0;
+	cout << "Enter the interest rate: ";
+	cin >> interest;
+
+	int yearsOfLoan = 0.0;
+	cout << "Enter the years of loan: ";
+	cin >> yearsOfLoan;
 
 	double monthInterest = interest / monthsInYear;
 	long monthsOfLoan = yearsOfLoan * monthsInYear;
