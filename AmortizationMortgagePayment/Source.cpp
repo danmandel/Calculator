@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 #include "divisor.h"
 #include "multiplier.h"
 
@@ -25,9 +27,12 @@ int main()
 	double monthInterest = divisor(interest, monthsInYear);
 	long monthsOfLoan = multiplier(yearsOfLoan,monthsInYear);
 
-	cout << principal << " " << interest << " " <<
-		yearsOfLoan << " " << monthInterest << " " <<
-		monthsOfLoan << endl;
+	double payment = 0.0;
+	payment = principal *(monthInterest /
+		(1 - (pow((double)1 + monthInterest, (double)-monthsOfLoan))));
+
+	cout << "Monthly Payment: " << setiosflags(ios::fixed) //keep decimal point in particuar precision
+		<< setprecision(2) << payment << endl;
 
 	system("pause");
 	return 0;
