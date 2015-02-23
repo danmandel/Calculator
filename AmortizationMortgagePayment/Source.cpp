@@ -41,7 +41,16 @@ int main()
 	currBalance = principal;
 
 	while (currLoanMonth <= monthsOfLoan){
-		cout << "Current Month: " << currLoanMonth << endl;
+		//cout << "Current Month: " << currLoanMonth << endl;
+		currInterestPayment = currBalance * monthInterest;
+
+		currPrincipalPayment = payment - currInterestPayment;
+		currBalance = currBalance - currPrincipalPayment;
+		cout << "Current Month: " << currLoanMonth
+			<< " Current Interest: " << currInterestPayment
+			<< " Current Principal: " << currPrincipalPayment
+			<< " Balance: " << currBalance << endl;
+		
 		currLoanMonth++;
 	}
 
