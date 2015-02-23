@@ -3,13 +3,12 @@
 #include <iomanip>
 #include "divisor.h"
 #include "multiplier.h"
+#include "globals.h"
 
 using namespace std;
 
 int main()
 {
-	const int monthsInYear = 12;
-	const int percentDenominator = 100;
 
 	double principal = 0.0;
 	cout << "Enter the principal amount: ";
@@ -18,14 +17,14 @@ int main()
 	double humanInterest = 0.0;
 	cout << "Enter the interest rate: ";
 	cin >> humanInterest;
-	double interest = divisor(humanInterest, percentDenominator);
+	double interest = divisor(humanInterest, gPercentDenominator);
 
 	int yearsOfLoan = 0.0;
 	cout << "Enter the years of loan: ";
 	cin >> yearsOfLoan;
 
-	double monthInterest = divisor(interest, monthsInYear);
-	long monthsOfLoan = multiplier(yearsOfLoan,monthsInYear);
+	double monthInterest = divisor(interest, gMonthsInYear);
+	long monthsOfLoan = multiplier(yearsOfLoan,gMonthsInYear);
 
 	double payment = 0.0;
 	payment = principal *(monthInterest /
@@ -41,15 +40,27 @@ int main()
 	currBalance = principal;
 
 	while (currLoanMonth <= monthsOfLoan){
-		//cout << "Current Month: " << currLoanMonth << endl;
+
+		gAmortizeMonth amortMonth;
 		currInterestPayment = currBalance * monthInterest;
 
 		currPrincipalPayment = payment - currInterestPayment;
 		currBalance = currBalance - currPrincipalPayment;
-		cout << "Current Month: " << currLoanMonth
-			<< " Current Interest: " << currInterestPayment
-			<< " Current Principal: " << currPrincipalPayment
-			<< " Balance: " << currBalance << endl;
+
+		amortMonth.year = 1;
+		amortMonth.yearMonth = 1;
+		amortMonth.loanMonth = currLoanMonth;
+		amortMonth.payment = payment;
+		amortMonth.pureInterest = currInterestPayment;
+		amortMonth.paidDownPrincipal = currPrincipalPayment;
+		amortMonth.principalBalance = currBalance;
+		
+
+		cout << "Current Month: " << amortMonth.loanMonth
+			<< " Current Interest: " << amortMonth.pureInterest
+			<< " Current Principal: " << amortMonth.paidDownPrincipal
+			<< " Balance: " << amortMonth.principalBalance
+			<< endl;
 		
 		currLoanMonth++;
 	}
