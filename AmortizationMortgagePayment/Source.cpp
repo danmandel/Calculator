@@ -9,26 +9,40 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	cout << "argc: " << argc << endl;
-	cout << "argv[0]: " << argv[0] << endl;
-	
-	for (int i = 0; i < argc; i++)
-	{
-		cout << "argv[" << i << "]: " << argv[i] << endl;
-	}
-	
 	double principal = 0.0;
-	cout << "Enter the principal amount: ";
-	cin >> principal;
-
 	double humanInterest = 0.0;
-	cout << "Enter the interest rate: ";
-	cin >> humanInterest;
-	double interest = divisor(humanInterest, gPercentDenominator);
-
 	int yearsOfLoan = 0.0;
-	cout << "Enter the years of loan: ";
-	cin >> yearsOfLoan;
+
+	
+	if (argc == 1)
+	{
+		/*cout << "argc: " << argc << endl;
+		cout << "argv[0]: " << argv[0] << endl;
+
+		for (int i = 0; i < argc; i++)
+		{
+			cout << "argv[" << i << "]: " << argv[i] << endl;
+		}*/
+
+		cout << "Enter the principal amount: ";
+		cin >> principal;
+
+		cout << "Enter the interest rate: ";
+		cin >> humanInterest;
+
+		cout << "Enter the years of loan: ";
+		cin >> yearsOfLoan;
+	} else {
+		principal = atof(argv[1]);;
+		humanInterest = atof(argv[2]);
+		yearsOfLoan = atoi(argv[3]);
+	}
+
+	cout << "Loan Principal: " << principal << endl;
+	cout << "Interest Rate: " << humanInterest << "%" << endl;
+	cout << "Time Period: " << yearsOfLoan << " years" << endl;
+
+	double interest = divisor(humanInterest, gPercentDenominator);
 
 	double monthInterest = divisor(interest, gMonthsInYear);
 	long monthsOfLoan = multiplier(yearsOfLoan,gMonthsInYear);
