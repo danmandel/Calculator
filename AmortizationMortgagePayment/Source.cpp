@@ -7,6 +7,13 @@
 
 using namespace std;
 
+enum AmortizeProgram
+{
+	LOAN_PRINCIPAL = 1,
+	INTEREST_RATE = 2,
+	YEARS_OF_LOAN = 3
+};
+
 int main(int argc, char* argv[])
 {
 	double principal = 0.0;
@@ -33,9 +40,9 @@ int main(int argc, char* argv[])
 		cout << "Enter the years of loan: ";
 		cin >> yearsOfLoan;
 	} else {
-		principal = atof(argv[1]);;
-		humanInterest = atof(argv[2]);
-		yearsOfLoan = atoi(argv[3]);
+		principal = atof(argv[LOAN_PRINCIPAL]);;
+		humanInterest = atof(argv[INTEREST_RATE]);
+		yearsOfLoan = atoi(argv[YEARS_OF_LOAN]);
 	}
 
 	cout << "Loan Principal: " << principal << endl;
