@@ -14,6 +14,17 @@ enum AmortizeProgram
 	YEARS_OF_LOAN = 3
 };
 
+enum AmortEnum
+{
+	YR_OUT = 2,
+	MN_OUT = 2,
+	CUM_MN_OUT = 5,
+	PAYMENT_OUT = 12,
+	INTEREST_OUT = 12,
+	PRINCIPAL_OUT = 12,
+	BALANCE_OUT = 16
+};
+
 int main(int argc, char* argv[])
 {
 	double principal = 0.0;
@@ -67,7 +78,13 @@ int main(int argc, char* argv[])
 	long currLoanMonth = 1;
 	currBalance = principal;
 
+	int year = 1;
+	int switchYear = 0;
+	int yearMonth = 1;
+
+
 	while (currLoanMonth <= monthsOfLoan){
+
 
 		gAmortizeMonth amortMonth;
 		currInterestPayment = currBalance * monthInterest;
@@ -75,21 +92,30 @@ int main(int argc, char* argv[])
 		currPrincipalPayment = payment - currInterestPayment;
 		currBalance = currBalance - currPrincipalPayment;
 
-		amortMonth.year = 1;
-		amortMonth.yearMonth = 1;
+		amortMonth.year = year;
+		amortMonth.yearMonth = yearMonth;
 		amortMonth.loanMonth = currLoanMonth;
 		amortMonth.payment = payment;
 		amortMonth.pureInterest = currInterestPayment;
 		amortMonth.paidDownPrincipal = currPrincipalPayment;
 		amortMonth.principalBalance = currBalance;
 		
+		cout <<
+			setw(YR_OUT) << amortMonth.year << " " <<
+			setw(MN_OUT) << amortMonth.yearMonth << " " <<
+			setw(CUM_MN_OUT) << amortMonth.loanMonth << " " <<
+			setw(PAYMENT_OUT) << amortMonth.payment << " " <<
+			setw(INTEREST_OUT) << amortMonth.pureInterest << " " <<
+			setw(PRINCIPAL_OUT) << amortMonth.paidDownPrincipal << " " <<
+			setw(BALANCE_OUT) << amortMonth.principalBalance << " " <<
+			endl;
 
-		cout << "Current Month: " << amortMonth.loanMonth
-			<< " Current Interest: " << amortMonth.pureInterest
-			<< " Current Principal: " << amortMonth.paidDownPrincipal
-			<< " Balance: " << amortMonth.principalBalance
-			<< endl;
-		
+		yearMonth++;
+		if (yearMonth > gMonthsInYear)
+		{
+			yearMonth = 1;
+			year++;
+		}
 		currLoanMonth++;
 	}
 
