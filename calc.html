@@ -1,74 +1,77 @@
-
-
 <html>
+
 <head>
-    
+    <style>
+        .button {
+            color: black;
+            border-radius: 50%;
+        }
+    </style>
+
     <script>
-    
-        
-    function doAdd(){
-    var x = Number(document.getElementById('box1').value);
-    var y = Number(document.getElementById('box2').value);
-    var answerbox = document.getElementById('box3');
-    answerbox.value = x + y;   
-    }
-        
-    function doSubtract(){
-    var x = Number(document.getElementById('box1').value);
-    var y = Number(document.getElementById('box2').value);
-    var answerbox = document.getElementById('box3');
-    answerbox.value = x - y;   
-    }
-        
-    function doDivide(){
-    var x = Number(document.getElementById('box1').value);
-    var y = Number(document.getElementById('box2').value);
-    var answerbox = document.getElementById('box3');
-    answerbox.value = x / y;   
-    }
-    function doMultiply(){
-    var x = Number(document.getElementById('box1').value);
-    var y = Number(document.getElementById('box2').value);
-    var answerbox = document.getElementById('box3');
-    answerbox.value = x * y;   
-    }
-    function doPower(){
-    var x = Number(document.getElementById('box1').value);
-    var y = Number(document.getElementById('box2').value);
-    var answerbox = document.getElementById('box3');
-    var result = 1
-    for (i=0;i < y; i++) {
-    result = result * x;
-    }
-    answerbox.value = result;   
-    }
-    function doClear(){
-    document.getElementById('box1').value = "";
-    document.getElementById('box2').value = "";
-    document.getElementById('box3').value = "";
-    }
-        
-    
+        function doAdd() {
+            var x = Number(document.getElementById('box1').value);
+            var y = Number(document.getElementById('box2').value);
+            var answerbox = document.getElementById('box3');
+            answerbox.value = x + y;
+        }
+
+        function doSubtract() {
+            var x = Number(document.getElementById('box1').value);
+            var y = Number(document.getElementById('box2').value);
+            var answerbox = document.getElementById('box3');
+            answerbox.value = x - y;
+        }
+
+        function doDivide() {
+            var x = Number(document.getElementById('box1').value);
+            var y = Number(document.getElementById('box2').value);
+            var answerbox = document.getElementById('box3');
+            answerbox.value = x / y;
+        }
+
+        function doMultiply() {
+            var x = Number(document.getElementById('box1').value);
+            var y = Number(document.getElementById('box2').value);
+            var answerbox = document.getElementById('box3');
+            answerbox.value = x * y;
+        }
+
+        function doPower() {
+            var x = Number(document.getElementById('box1').value);
+            var y = Number(document.getElementById('box2').value);
+            var answerbox = document.getElementById('box3');
+            var result = 1
+            for (i = 0; i < y; i++) {
+                result = result * x;
+            }
+            answerbox.value = result;
+        }
+
+        function doClear() {
+            document.getElementById('box1').value = "";
+            document.getElementById('box2').value = "";
+            document.getElementById('box3').value = "";
+        }
     </script>
-    </head>
-    
-    <body>
-    <input type="text" id = box1> 
-    <br>
-    <input type="text" id = box2>
-    <button onclick="doAdd()">+</button>
-    <button onclick="doSubtract()">-</button>
-    <button onclick="doDivide()">/</button>
-    <button onclick="doMultiply()">*</button>
-    <button onclick="doPower()">^</button>
-    <button onclick="doClear()">Clear</button>
-        
-        
-    <br>
-    <input type="text" id = box3>
-    <br>
-        
-    </body>
+</head>
+
+<body>
+    <div class="calc">
+        <input type="text" id=box1>
+        <br>
+        <input type="text" id=box2>
+        <button class="button" onclick="doAdd()">+</button>
+        <button class="button" onclick="doSubtract()">-</button>
+        <button class="button" onclick="doDivide()">/</button>
+        <button class="button" onclick="doMultiply()">*</button>
+        <button class="button" onclick="doPower()">^</button>
+        <button class="button" onclick="doClear()">Clear</button>
+        <br>
+        <input type="text" id=box3>
+        <br>
+    </div>
+
+</body>
 
 </html>
-
